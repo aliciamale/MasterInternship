@@ -11,8 +11,8 @@ import scipy as sp
 import mahotas
 #import copy
 
-path = '/user/amale/home/Pictures/MC70/'
-pathB = '/user/amale/home/Pictures/MC70/IMG_Bonnet/'
+path = '/MC70/'
+pathB = '/MC70/IMG_Bonnet/'
 name = 'IMG_05'
 nameB = 'IMG_Bonnet_05'
 ext = '.JPG'
@@ -59,29 +59,29 @@ def OtsuProprement(img):
         
 seuil = 100000  # max = 163000, min = 0
 
-pathEIG_VPgde = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/EIG/'
-pathEIG_VPmed = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/EIG/'
-pathEIG_VPpet = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/EIG/'
+pathEIG_VPgde = '/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/EIG/'
+pathEIG_VPmed = '/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/EIG/'
+pathEIG_VPpet = '/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/EIG/'
 
-pathSVD_VPgde = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/SVD/'
-pathSVD_VPmed = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/SVD/'
-pathSVD_VPpet = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/SVD/'
+pathSVD_VPgde = '/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/SVD/'
+pathSVD_VPmed = '/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/SVD/'
+pathSVD_VPpet = '/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/SVD/'
 
-pathSVD_UPgde = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPgde/pxTranspSup'+str(seuil)+'/'
-pathSVD_UPmed = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPmed/pxTranspSup'+str(seuil)+'/'
-pathSVD_UPpet = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPpet/pxTranspSup'+str(seuil)+'/'
+pathSVD_UPgde = '/MC70/IMG_Bonnet/UPgde/pxTranspSup'+str(seuil)+'/'
+pathSVD_UPmed = '/MC70/IMG_Bonnet/UPmed/pxTranspSup'+str(seuil)+'/'
+pathSVD_UPpet = '/MC70/IMG_Bonnet/UPpet/pxTranspSup'+str(seuil)+'/'
 
-pathEIG_VPgde_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
-pathEIG_VPmed_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
-pathEIG_VPpet_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
+pathEIG_VPgde_BS = '/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
+pathEIG_VPmed_BS = '/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
+pathEIG_VPpet_BS = '/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/EIG/BeforeSegm/'
 
-pathSVD_VPgde_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
-pathSVD_VPmed_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
-pathSVD_VPpet_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
+pathSVD_VPgde_BS = '/MC70/IMG_Bonnet/VPgde/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
+pathSVD_VPmed_BS = '/MC70/IMG_Bonnet/VPmed/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
+pathSVD_VPpet_BS = '/MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/SVD/BeforeSegm/'
 
-pathSVD_UPgde_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPgde/pxTranspSup'+str(seuil)+'/BeforeSegm/'
-pathSVD_UPmed_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPmed/pxTranspSup'+str(seuil)+'/BeforeSegm/'
-pathSVD_UPpet_BS = '/user/amale/home/Pictures/MC70/IMG_Bonnet/UPpet/pxTranspSup'+str(seuil)+'/BeforeSegm/'
+pathSVD_UPgde_BS = '/MC70/IMG_Bonnet/UPgde/pxTranspSup'+str(seuil)+'/BeforeSegm/'
+pathSVD_UPmed_BS = '/MC70/IMG_Bonnet/UPmed/pxTranspSup'+str(seuil)+'/BeforeSegm/'
+pathSVD_UPpet_BS = '/MC70/IMG_Bonnet/UPpet/pxTranspSup'+str(seuil)+'/BeforeSegm/'
         
 ###### Meme chose sur les images de bonnet extrait en enlevant les px transparents et ceux trop pres du blanc #####   
 for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
