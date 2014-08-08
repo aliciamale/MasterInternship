@@ -9,9 +9,9 @@ import numpy as np
 import mahotas
 
 
-path1 = '/user/amale/home/Pictures/MC70/TestGimp/Stats1/'
-path2 = '/user/amale/home/Pictures/MC70/TestGimp/Stats2/'
-path3 = '/user/amale/home/Pictures/MC70/TestGimp/Stats3/'
+path1 = '/MC70/TestGimp/Stats1/'
+path2 = '/MC70/TestGimp/Stats2/'
+path3 = '/MC70/TestGimp/Stats3/'
 
 name = 'IMG_05'
 name1 = 'IMG_S1_05'

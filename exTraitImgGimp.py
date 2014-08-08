@@ -10,12 +10,12 @@ import scipy.misc as smisc
 import numpy as np
 #import copy
 
-pathI = '/user/amale/home/Pictures/MC70/'
-pathB = '/user/amale/home/Pictures/MC70/IMG_Bonnet/'
-path =  '/user/amale/home/Pictures/MC70/TestGimp/'
-path1 = '/user/amale/home/Pictures/MC70/TestGimp/Stats1/'
-path2 = '/user/amale/home/Pictures/MC70/TestGimp/Stats2/'
-path3 = '/user/amale/home/Pictures/MC70/TestGimp/Stats3/'
+pathI = '~/MC70/'
+pathB = '~/MC70/IMG_Bonnet/'
+path =  '~/MC70/TestGimp/'
+path1 = '~/MC70/TestGimp/Stats1/'
+path2 = '~/MC70/TestGimp/Stats2/'
+path3 = '~/MC70/TestGimp/Stats3/'
 
 name = 'IMG_05'
 nameB = 'IMG_Bonnet_05'

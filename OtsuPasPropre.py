@@ -12,7 +12,7 @@ import scipy.misc as smisc
 import mahotas
 
 
-path = '/user/amale/home/Pictures/MC70/'
+path = '/MC70/'
 name = 'IMG_05'
 ext = '.JPG'
 name2 = 'Otsu/IMG_Otsu_05'

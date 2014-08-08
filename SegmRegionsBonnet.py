@@ -8,7 +8,7 @@ import numpy as np
 import mahotas
 import scipy.misc as smisc
 
-path = '/user/amale/home/Pictures/MC70/'
+path = '/MC70/'
 pathS = path+'RegionSegmentation/IMG05'
 name = 'IMG_05'
 ext = '.JPG'

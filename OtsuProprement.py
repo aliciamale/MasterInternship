@@ -11,11 +11,11 @@ import scipy.misc as smisc
 import mahotas
 import numpy as np
 
-path = '/user/amale/home/Pictures/MC70/'
-path1 = '/user/amale/home/Pictures/MC70/TestGimp/Stats1/'
-path2 = '/user/amale/home/Pictures/MC70/TestGimp/Stats2/'
-path3 = '/user/amale/home/Pictures/MC70/TestGimp/Stats3/'
-pathA = '/user/amale/home/Pictures/MC70/TestGimp/'
+path = '/MC70/'
+path1 = '/MC70/TestGimp/Stats1/'
+path2 = '/MC70/TestGimp/Stats2/'
+path3 = '/MC70/TestGimp/Stats3/'
+pathA = '/MC70/TestGimp/'
 
 name = 'IMG_05'
 nameSeg = 'OtsuProprement/IMG_OtsuP_05'

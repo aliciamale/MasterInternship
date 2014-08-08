@@ -10,10 +10,10 @@ import numpy as np
 import mahotas
 
 
-path1 = '/user/amale/home/Pictures/MC70/IMG_Bonnet/'
-path2 = '/user/amale/home/Pictures/MC70/IMG_ElectrodesVertes/'
-path3 = '/user/amale/home/Pictures/MC70/IMG_ElectrodesBlanches/'
-path4 = '/user/amale/home/Pictures/MC70/IMG_ElectrodesNoires/'
+path1 = '/MC70/IMG_Bonnet/'
+path2 = '/MC70/IMG_ElectrodesVertes/'
+path3 = '/MC70/IMG_ElectrodesBlanches/'
+path4 = '/MC70/IMG_ElectrodesNoires/'
 
 name = 'IMG_05'
 name1 = 'IMG_Bonnet_05'
