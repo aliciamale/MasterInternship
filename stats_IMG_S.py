@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul  3 16:53:56 2014
-
 @author: amale
 """
 
@@ -48,5 +46,3 @@ for i in [28, 32, 37, 42, 47, 52, 57, 62, 66]:
     print 'S1 : moyenne = ', moy1, '/ variance = ', var1, '/ maximum = ', max1, '/ minimum = ', min1
     print 'S2 : moyenne = ', moy2, '/ variance = ', var2, '/ maximum = ', max2, '/ minimum = ', min1
     print 'S3 : moyenne = ', moy3, '/ variance = ', var3, '/ maximum = ', max3, '/ minimum = ', min1, '\n'
-    
-    

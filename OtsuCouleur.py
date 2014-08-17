@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 27 10:02:09 2014
-
 @author: amale
 """
+import sys
+sys.path.append('/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL')
+
 import numpy as np
 from numpy import linalg as la
 import scipy.misc as smisc
@@ -46,7 +47,7 @@ def OtsuProprement(img):
         
         return B
         
-    ##### Si on a une image niveau de gris #####
+    ##### Si on a une image niveaux de gris #####
     if np.shape(size) == (2,):
         T = mahotas.thresholding.otsu(img)
         B = img > T

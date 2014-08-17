@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jul 22 13:49:28 2014
-
 @author: amale
 """
+
+import sys
+sys.path.append('/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL')
+
 import numpy as np
 import mahotas
 import scipy.misc as smisc
 
-path = '/MC70/'
+path = 'MC70/'
 pathS = path+'RegionSegmentation/IMG05'
 name = 'IMG_05'
 ext = '.JPG'
@@ -139,64 +141,41 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     S7 = (PR - rm7)**2 / sigr7**2 + (PG - gm7)**2 / sigg7**2 + (PB - bm7)**2 / sigb7**2
     Scolor7 = segmColor(PR,PG,PB,rm7,gm7,bm7,sigr7,sigg7,sigb7)
     
-    #### Max of each Si ####
-#    M1 = np.amax(S1)
-#    M2 = np.amax(S2)
-#    M3 = np.amax(S3)
-#    M4 = np.amax(S4)
-#    M5 = np.amax(S5)
-#    M6 = np.amax(S6)
-#    M7 = np.amax(S7)
+    #### Max of SB ####
     MB = np.amax(SB)
     
     #### Segmentation ####
     seuil = MB  
-    IS1 = S1 < MB #M1/10.
-    IS2 = S2 < MB #M2/10.
-    IS3 = S3 < MB #M3/10.
-    IS4 = S4 < MB #M4/10.
-    IS5 = S5 < MB #M5/10.
-    IS6 = S6 < MB #M6/10.
-    IS7 = S7 < MB #M7/10.
+    IS1 = S1 < MB
+    IS2 = S2 < MB
+    IS3 = S3 < MB
+    IS4 = S4 < MB
+    IS5 = S5 < MB
+    IS6 = S6 < MB
+    IS7 = S7 < MB
     
-    ISU1 = np.zeros(S1.shape, dtype=np.uint8)
-    ISU2 = np.zeros(S2.shape, dtype=np.uint8)
-    ISU3 = np.zeros(S3.shape, dtype=np.uint8)
-    ISU4 = np.zeros(S4.shape, dtype=np.uint8)
-    ISU5 = np.zeros(S5.shape, dtype=np.uint8)
-    ISU6 = np.zeros(S6.shape, dtype=np.uint8)
-    ISU7 = np.zeros(S7.shape, dtype=np.uint8)    
+    ISU1 = 255 * IS1.astype(np.uint8)
+    ISU2 = 255 * IS2.astype(np.uint8)
+    ISU3 = 255 * IS3.astype(np.uint8)
+    ISU4 = 255 * IS4.astype(np.uint8)
+    ISU5 = 255 * IS5.astype(np.uint8)
+    ISU6 = 255 * IS6.astype(np.uint8)
+    ISU7 = 255 * IS7.astype(np.uint8)
     
-    ISU1[IS1] = 255
-    ISU2[IS2] = 255
-    ISU3[IS3] = 255
-    ISU4[IS4] = 255
-    ISU5[IS5] = 255
-    ISU6[IS6] = 255
-    ISU7[IS7] = 255
-    
-#    ISU1 = 255 * IS1.astype(np.uint8)
-#    ISU2 = 255 * IS2.astype(np.uint8)
-#    ISU3 = 255 * IS3.astype(np.uint8)
-#    ISU4 = 255 * IS4.astype(np.uint8)
-#    ISU5 = 255 * IS5.astype(np.uint8)
-#    ISU6 = 255 * IS6.astype(np.uint8)
-#    ISU7 = 255 * IS7.astype(np.uint8)
-    
-    print IS1[1107,473]
-    print ISU1[1107,473]
-    print ISU1[1163,470]
-    print ISU1[1125,469]
-    
+#    print IS1[1107,473]
+#    print ISU1[1107,473]
+#    print ISU1[1163,470]
+#    print ISU1[1125,469]
+
     IS = IS1+IS2+IS3+IS4+IS5+IS6+IS7
     ISU = np.zeros(S1.shape, dtype=np.uint8)
     ISU[IS] = 255
     
-    print IS[1107,473]
-    print ISU[1107,473]
-    print ISU[1163,470]
-    print ISU[1125,469]
-    
+#    print IS[1107,473]
+#    print ISU[1107,473]
+#    print ISU[1163,470]
+#    print ISU[1125,469]
+
     #### Saving results ####
     smisc.imsave(pathS+str(i)+'/S/S_R1_'+name+str(i)+ext,S1)
     smisc.imsave(pathS+str(i)+'/S/S_R2_'+name+str(i)+ext,S2)
@@ -224,6 +203,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     smisc.imsave(pathS+str(i)+'/MaxBonnet/IS_R7_'+'MaxBonnet_'+name+str(i)+ext,ISU7)
     
     smisc.imsave(pathS+str(i)+'/MaxBonnet/IS_sum_'+'MaxBonnet_'+name+str(i)+ext,IS)
-    print MB, SB
-    print 'IMG_05', str(i), '-> Checked \n'
+#    print MB, SB
+#    print 'IMG_05', str(i), '-> Checked \n'
 

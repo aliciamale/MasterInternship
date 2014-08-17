@@ -1,9 +1,5 @@
-#!/user/amale/home/python2.7
-
 # -*- coding: utf-8 -*-
 """
-Created on Mon Apr 14 17:25:20 2014
-
 @author: amale
 """
 

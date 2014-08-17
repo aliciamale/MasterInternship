@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed May 21 12:07:22 2014
-
 @author: amale
 """
 
-#import scipy.misc as smisc
 import numpy as np
 import mahotas
 
@@ -37,22 +34,6 @@ for i in [28, 32, 37, 42, 47, 52, 57, 62, 66]:
     size = img1.shape 
     nblig = size[0]    
     nbcol = size[1]
-    
-#    PR1 = []    
-#    PG1 = []
-#    PB1 = []
-#    
-#    PR2 = []
-#    PG2 = []
-#    PB2 = []
-#
-#    PR3 = []
-#    PG3 = []
-#    PB3 = []
-#    
-#    PR4 = []
-#    PG4 = []
-#    PB4 = []
     
     ### Il faut que la moyenne corresponde a une couleur moyenne
     ### On dirait que l'image n'a pas le fond transparent
@@ -96,38 +77,7 @@ for i in [28, 32, 37, 42, 47, 52, 57, 62, 66]:
     PR4 = np.delete(PR4, elt_del4)
     PG4 = np.delete(PG4, elt_del4)
     PB4 = np.delete(PB4, elt_del4)
-    
-#    for j in xrange(size[0]):
-#        for k in xrange(size[1]):
-#            if img1[j,k,3] != 0:
-#                pxR1 = img1[j,k,0]
-#                pxG1 = img1[j,k,1]
-#                pxB1 = img1[j,k,2]                
-#                PR1 = np.append(PR1, pxR1)
-#                PG1 = np.append(PG1, pxG1)
-#                PB1 = np.append(PB1, pxB1)             
-#            if img2[j,k,3] != 0:
-#                pxR2 = img2[j,k,0]
-#                pxG2 = img2[j,k,1]
-#                pxB2 = img2[j,k,2]                
-#                PR2 = np.append(PR2, pxR2)
-#                PG2 = np.append(PG2, pxG2)
-#                PB2 = np.append(PB2, pxB2)
-#            if img3[j,k,3] != 0:
-#                pxR3 = img3[j,k,0]
-#                pxG3 = img3[j,k,1]
-#                pxB3 = img3[j,k,2]                
-#                PR3 = np.append(PR3, pxR3)
-#                PG3 = np.append(PG3, pxG3)
-#                PB3 = np.append(PB3, pxB3)  
-#            if img4[j,k,3] != 0:
-#                pxR4 = img4[j,k,0]
-#                pxG4 = img4[j,k,1]
-#                pxB4 = img4[j,k,2]                
-#                PR4 = np.append(PR4, pxR4)
-#                PG4 = np.append(PG4, pxG4)
-#                PB4 = np.append(PB4, pxB4)       
-#    
+     
     ##### Bonnet #####
     
     moyR1 = np.mean(PR1)
@@ -142,7 +92,7 @@ for i in [28, 32, 37, 42, 47, 52, 57, 62, 66]:
     
     RGBVar1 = [varR1, varG1, varB1]
     
-    ##### Electrodes Vertes ######    
+    ##### Electrodes Vertes ######
     
     moyR2 = np.mean(PR2)
     moyG2 = np.mean(PG2)
@@ -197,7 +147,3 @@ for i in [28, 32, 37, 42, 47, 52, 57, 62, 66]:
     print 'Variances RGB Electrodes Vertes = ', RGBVar2
     print 'Variances RGB Electrodes Blanches = ', RGBVar3
     print 'variances RGB Electrodes Noires = ', RGBVar4, '\n'
-    
-    ##### Threshold Calcul #####
-    #T = mahotas.thresholding.otsu(img)
-                

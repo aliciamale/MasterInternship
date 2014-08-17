@@ -1,11 +1,8 @@
-#!/user/amale/home/python2.7
-
 # -*- coding: utf-8 -*-
 """
-Created on Mon May 19 11:46:01 2014
-
 @author: amale
 """
+
 import scipy as sp
 import scipy.misc as smisc
 import mahotas
