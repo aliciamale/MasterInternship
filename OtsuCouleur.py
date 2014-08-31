@@ -157,10 +157,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     V1 = V[:,1]
     V2 = V[:,2]
     
-#    U0 = U[:,0]
-#    U1 = U[:,1]
-#    U2 = U[:,2]
-    
     I0 = v0[0]*redm + v0[1]*greenm + v0[2]*bluem
     I1 = v1[0]*redm + v1[1]*greenm + v1[2]*bluem
     I2 = v2[0]*redm + v2[1]*greenm + v2[2]*bluem
@@ -168,10 +164,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     IV0 = V0[0]*redm + V0[1]*greenm + V0[2]*bluem
     IV1 = V1[0]*redm + V1[1]*greenm + V1[2]*bluem
     IV2 = V2[0]*redm + V2[1]*greenm + V2[2]*bluem
-    
-#    IU0 = U0[0]*redm + U0[1]*greenm + U0[2]*bluem
-#    IU1 = U1[0]*redm + U0[1]*greenm + U0[2]*bluem
-#    IU2 = U2[0]*redm + U0[1]*greenm + U0[2]*bluem
     
         ### New criteria // SegmRegionsBonnet.py ###
     S_V = (IV0/s[0])**2 + (IV1/s[1])**2 + (IV2/s[2])**2
@@ -184,10 +176,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     IV0A = np.around(IV0)
     IV1A = np.around(IV1)
     IV2A = np.around(IV2)
-
-#    IU0A = np.around(IU0)
-#    IU1A = np.around(IU1)
-#    IU2A = np.around(IU2)
         
         ### -> uint8 ###
     I0U = I0A.astype(np.uint8)
@@ -197,10 +185,7 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     IV0U = IV0A.astype(np.uint8)
     IV1U = IV1A.astype(np.uint8)
     IV2U = IV2A.astype(np.uint8)        
-        
-#    IU0U = IU0A.astype(np.uint8)
-#    IU1U = IU1A.astype(np.uint8)
-#    IU2U = IU2A.astype(np.uint8)
+
     
         ### Otsu ###
     IS0 = OtsuProprement(I0U)
@@ -210,10 +195,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     ISV0 = OtsuProprement(IV0U)
     ISV1 = OtsuProprement(IV1U)
     ISV2 = OtsuProprement(IV2U)
-    
-#    ISU0 = OtsuProprement(IU0U)
-#    ISU1 = OtsuProprement(IU1U)
-#    ISU2 = OtsuProprement(IU2U)
     
     ##### Saving Segmented Images #####
     nameEIG_VPgde = 'IMG_VPgde_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
@@ -250,10 +231,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     smisc.imsave(pathSVD_VPmed_BS+nameSVD_VPmed_BS,IV1)
     smisc.imsave(pathSVD_VPpet_BS+nameSVD_VPpet_BS,IV2)
     
-#    smisc.imsave(pathSVD_UPgde_BS+nameSVD_UPgde_BS,IU0)
-#    smisc.imsave(pathSVD_UPmed_BS+nameSVD_UPmed_BS,IU1)
-#    smisc.imsave(pathSVD_UPpet_BS+nameSVD_UPpet_BS,IU2)
-    
     smisc.imsave(pathB+'S_V_IMG05'+str(i)+ext,S_V)
     
     #### After Segmentation ####
@@ -264,8 +241,4 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     ### SVD ###
     smisc.imsave(pathSVD_VPgde+nameSVD_VPgde,ISV0)
     smisc.imsave(pathSVD_VPmed+nameSVD_VPmed,ISV1)
-    smisc.imsave(pathSVD_VPpet+nameSVD_VPpet,ISV2)    
-    
-#    smisc.imsave(pathSVD_UPgde+nameSVD_UPgde,ISU0)
-#    smisc.imsave(pathSVD_UPmed+nameSVD_UPmed,ISU1)
-#    smisc.imsave(pathSVD_UPpet+nameSVD_UPpet,ISU2)    
+    smisc.imsave(pathSVD_VPpet+nameSVD_VPpet,ISV2)

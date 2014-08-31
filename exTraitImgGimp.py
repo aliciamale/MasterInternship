@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-@author: amale
-"""
 import sys
 sys.path.append('/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL')
 
