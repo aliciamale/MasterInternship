@@ -118,9 +118,9 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     
     SB = (PRB - rmB)**2 / sigrB + (PGB - gmB)**2 / siggB + (PBB - bmB)**2 / sigbB
     
-    #### Calculating for each stats from each cap regions ####
+    #### Calculs criteres avec stats calculees, pour chaque region bonnet ####
     S1 = (PR - rm1)**2 / sigr1**2 + (PG - gm1)**2 / sigg1**2 + (PB - bm1)**2 / sigb1**2
-        #### Idem to S1 but in color
+        #### Pareil que S1 mais en couleur
     Scolor1 = segmColor(PR,PG,PB,rm1,gm1,bm1,sigr1,sigg1,sigb1)
     
     S2 = (PR - rm2)**2 / sigr2**2 + (PG - gm2)**2 / sigg2**2 + (PB - bm2)**2 / sigb2**2 
@@ -141,11 +141,10 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     S7 = (PR - rm7)**2 / sigr7**2 + (PG - gm7)**2 / sigg7**2 + (PB - bm7)**2 / sigb7**2
     Scolor7 = segmColor(PR,PG,PB,rm7,gm7,bm7,sigr7,sigg7,sigb7)
     
-    #### Max of SB ####
+    #### Max de SB ####
     MB = np.amax(SB)
     
     #### Segmentation ####
-    seuil = MB  
     IS1 = S1 < MB
     IS2 = S2 < MB
     IS3 = S3 < MB
@@ -161,20 +160,10 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     ISU5 = 255 * IS5.astype(np.uint8)
     ISU6 = 255 * IS6.astype(np.uint8)
     ISU7 = 255 * IS7.astype(np.uint8)
-    
-#    print IS1[1107,473]
-#    print ISU1[1107,473]
-#    print ISU1[1163,470]
-#    print ISU1[1125,469]
 
     IS = IS1+IS2+IS3+IS4+IS5+IS6+IS7
     ISU = np.zeros(S1.shape, dtype=np.uint8)
     ISU[IS] = 255
-    
-#    print IS[1107,473]
-#    print ISU[1107,473]
-#    print ISU[1163,470]
-#    print ISU[1125,469]
 
     #### Saving results ####
     smisc.imsave(pathS+str(i)+'/S/S_R1_'+name+str(i)+ext,S1)
@@ -184,7 +173,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     smisc.imsave(pathS+str(i)+'/S/S_R5_'+name+str(i)+ext,S5)
     smisc.imsave(pathS+str(i)+'/S/S_R6_'+name+str(i)+ext,S6)
     smisc.imsave(pathS+str(i)+'/S/S_R7_'+name+str(i)+ext,S7)
-    #smisc.imsave(pathS+str(i)+'/SB_'+name+str(i)+ext,SB)
     
     smisc.imsave(pathS+str(i)+'/S/Color/Scolor_R1_'+name+str(i)+ext,Scolor1)
     smisc.imsave(pathS+str(i)+'/S/Color/Scolor_R2_'+name+str(i)+ext,Scolor2)
