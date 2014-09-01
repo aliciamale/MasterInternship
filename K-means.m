@@ -6,7 +6,7 @@ path = 'MC70/';
 name = 'IMG_05';
 ext = '.JPG';
 
-for i = 28:30
+for i = 42
     j = int2str(i);
     name_img = strcat(path,name,j,ext);
     nbClass = 6;
@@ -35,13 +35,14 @@ for i = 28:30
     %% Label Every Pixel in the img using the results from kmeans
 
     px_label = reshape(cluster_id,nrows,ncols);
-    %subplot(212); imshow(px_label,[]); title('Image Labeled by cluster index');
+    %subplot(212); 
+    imshow(px_label,[]); title('Image Labeled by cluster index');
     
     %% Save the image
     
-    name2 = 'IMG_SEGM_05';
-    name_img2 = strcat(path,name2,j,ext);
-    imsave(px_label);
+    %name2 = 'IMG_SEGM_05';
+    %name_img2 = strcat(path,name2,j,ext);
+    %imsave(px_label);
 end
 
 

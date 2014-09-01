@@ -41,9 +41,9 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     I1A = np.around(I1)
     I2A = np.around(I2)
     
-    I0U = I0A.astype(np.uint8)
-    I1U = I1A.astype(np.uint8)
-    I2U = I2A.astype(np.uint8)
+    I0U = 255 * I0A.astype(np.uint8)
+    I1U = 255 * I1A.astype(np.uint8)
+    I2U = 255 * I2A.astype(np.uint8)
     
     smisc.imsave('IMG_eig_codebrut0_05'+str(i)+'.png',I0U)
     smisc.imsave('IMG_eig_codebrut1_05'+str(i)+'.png',I1U)

@@ -79,9 +79,33 @@ pathSVD_VPpet_BS = 'MC70/IMG_Bonnet/VPpet/pxTranspSup'+str(seuil)+'/SVD/BeforeSe
 pathSVD_UPgde_BS = 'MC70/IMG_Bonnet/UPgde/pxTranspSup'+str(seuil)+'/BeforeSegm/'
 pathSVD_UPmed_BS = 'MC70/IMG_Bonnet/UPmed/pxTranspSup'+str(seuil)+'/BeforeSegm/'
 pathSVD_UPpet_BS = 'MC70/IMG_Bonnet/UPpet/pxTranspSup'+str(seuil)+'/BeforeSegm/'
-        
-###### Meme chose sur les images de bonnet extrait en enlevant les px transparents et ceux trop pres du blanc #####   
+
+###### Meme chose sur les images de bonnet extrait en enlevant les px transparents et ceux trop pres du blanc #####
 for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
+    
+    nameEIG_VPgde = 'IMG_VPgde_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameEIG_VPmed = 'IMG_VPmed_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameEIG_VPpet = 'IMG_VPpet_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+
+    nameSVD_VPgde = 'IMG_VPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_VPmed = 'IMG_VPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_VPpet = 'IMG_VPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+
+    nameSVD_UPgde = 'IMG_UPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_UPmed = 'IMG_UPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_UPpet = 'IMG_UPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+
+    nameEIG_VPgde_BS = 'IMG_BeforeSegm_VPgde_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameEIG_VPmed_BS = 'IMG_BeforeSegm_VPmed_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameEIG_VPpet_BS = 'IMG_BeforeSegm_VPpet_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+
+    nameSVD_VPgde_BS = 'IMG_BeforeSegm_VPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_VPmed_BS = 'IMG_BeforeSegm_VPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_VPpet_BS = 'IMG_BeforeSegm_VPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+
+    nameSVD_UPgde_BS = 'IMG_BeforeSegm_UPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_UPmed_BS = 'IMG_BeforeSegm_UPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
+    nameSVD_UPpet_BS = 'IMG_BeforeSegm_UPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
     
     ##### Reading Image #####
     Ib = mahotas.imread(pathB+nameB+str(i)+'.png')
@@ -102,7 +126,7 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     nbcol = sizeI[1]
     
     elt_del = [(nbcol*l + c+1) - 1 for l in xrange(nblig) \
-                                   for c in xrange(nbcol) if  (255 - redb[l,c])**2 + (255 - greenb[l,c])**2 + (255 - blueb[l,c])**2 < seuil]    
+                                   for c in xrange(nbcol) if  (255 - redb[l,c])**2 + (255 - greenb[l,c])**2 + (255 - blueb[l,c])**2 < seuil]
                 
     ##### Remove white and transparent pixels #####
     redb2 = np.delete(redb, elt_del)
@@ -136,33 +160,27 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     tmp = np.reshape(Im,(2048*3072,3))
     M = np.cov(tmp.T)
     
-    ##### SVD #####
-    U, s, V = la.svd(M) # M = U*s*V
-    # M.shape = (M,N), U.shape = (M,M), V.shape = (N,N)
-    normV2 = np.absolute(V)
-    
-    print normV2
-    print 'sizeU = ', U.shape, 'sizeV = ', V.shape, '\n'    
-    
+    ##### EIG #####
     w, v = la.eig(M)
+    
     v0 = v[:,0]
     v1 = v[:,1]
     v2 = v[:,2]
-    
-    V0 = V[:,0]
-    V1 = V[:,1]
-    V2 = V[:,2]
     
     I0 = v0[0]*redm + v0[1]*greenm + v0[2]*bluem
     I1 = v1[0]*redm + v1[1]*greenm + v1[2]*bluem
     I2 = v2[0]*redm + v2[1]*greenm + v2[2]*bluem
     
+    ##### SVD #####
+    U, s, V = la.svd(M)
+    
+    V0 = V[:,0]
+    V1 = V[:,1]
+    V2 = V[:,2]
+    
     IV0 = V0[0]*redm + V0[1]*greenm + V0[2]*bluem
     IV1 = V1[0]*redm + V1[1]*greenm + V1[2]*bluem
     IV2 = V2[0]*redm + V2[1]*greenm + V2[2]*bluem
-    
-        ### New criteria // SegmRegionsBonnet.py ###
-    S_V = (IV0/s[0])**2 + (IV1/s[1])**2 + (IV2/s[2])**2
         
         ### Around ###
     I0A = np.around(I0)
@@ -180,8 +198,7 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
         
     IV0U = IV0A.astype(np.uint8)
     IV1U = IV1A.astype(np.uint8)
-    IV2U = IV2A.astype(np.uint8)        
-
+    IV2U = IV2A.astype(np.uint8)
     
         ### Otsu ###
     IS0 = OtsuProprement(I0U)
@@ -193,43 +210,6 @@ for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
     ISV2 = OtsuProprement(IV2U)
     
     ##### Saving Segmented Images #####
-    nameEIG_VPgde = 'IMG_VPgde_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameEIG_VPmed = 'IMG_VPmed_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameEIG_VPpet = 'IMG_VPpet_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    nameSVD_VPgde = 'IMG_VPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_VPmed = 'IMG_VPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_VPpet = 'IMG_VPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    nameSVD_UPgde = 'IMG_UPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_UPmed = 'IMG_UPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_UPpet = 'IMG_UPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    nameEIG_VPgde_BS = 'IMG_BeforeSegm_VPgde_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameEIG_VPmed_BS = 'IMG_BeforeSegm_VPmed_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameEIG_VPpet_BS = 'IMG_BeforeSegm_VPpet_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    nameSVD_VPgde_BS = 'IMG_BeforeSegm_VPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_VPmed_BS = 'IMG_BeforeSegm_VPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_VPpet_BS = 'IMG_BeforeSegm_VPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    nameSVD_UPgde_BS = 'IMG_BeforeSegm_UPgde(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_UPmed_BS = 'IMG_BeforeSegm_UPmed(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    nameSVD_UPpet_BS = 'IMG_BeforeSegm_UPpet(SVD)_05'+str(i)+'pxTranspSup'+str(seuil)+'.png'
-    
-    #### Before Segmentation ####
-    ### EIG ###
-    smisc.imsave(pathEIG_VPgde_BS+nameEIG_VPgde_BS,I0)
-    smisc.imsave(pathEIG_VPmed_BS+nameEIG_VPmed_BS,I1)
-    smisc.imsave(pathEIG_VPpet_BS+nameEIG_VPpet_BS,I2)
-    ### SVD ###
-    smisc.imsave(pathSVD_VPgde_BS+nameSVD_VPgde_BS,IV0)
-    smisc.imsave(pathSVD_VPmed_BS+nameSVD_VPmed_BS,IV1)
-    smisc.imsave(pathSVD_VPpet_BS+nameSVD_VPpet_BS,IV2)
-    
-    smisc.imsave(pathB+'S_V_IMG05'+str(i)+ext,S_V)
-    
-    #### After Segmentation ####
     ### EIG ###
     smisc.imsave(pathEIG_VPgde+nameEIG_VPgde,IS0)
     smisc.imsave(pathEIG_VPmed+nameEIG_VPmed,IS1)

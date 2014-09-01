@@ -4,7 +4,6 @@ sys.path.append('/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib
 import mahotas
 import scipy.misc as smisc
 import numpy as np
-#import copy
 
 pathI = 'MC70/'
 pathB = 'MC70/IMG_Bonnet/'

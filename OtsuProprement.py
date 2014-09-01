@@ -1,18 +1,16 @@
-# -*- coding: utf-8 -*-
-"""
-@author: amale
-"""
+import sys
+sys.path.append('/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL')
 
 import scipy as sp
 import scipy.misc as smisc
 import mahotas
 import numpy as np
 
-path = '/MC70/'
-path1 = '/MC70/TestGimp/Stats1/'
-path2 = '/MC70/TestGimp/Stats2/'
-path3 = '/MC70/TestGimp/Stats3/'
-pathA = '/MC70/TestGimp/'
+path = 'MC70/'
+path1 = 'MC70/TestGimp/Stats1/'
+path2 = 'MC70/TestGimp/Stats2/'
+path3 = 'MC70/TestGimp/Stats3/'
+pathA = 'MC70/TestGimp/'
 
 name = 'IMG_05'
 nameSeg = 'OtsuProprement/IMG_OtsuP_05'
@@ -46,13 +44,17 @@ def OtsuProprement(img):
         Igreen = green > Tgreen
         Iblue = blue > Tblue
         
+        IUred = 255 * Ired.astype(np.uint8)
+        IUgreen = 255 * Igreen.astype(np.uint8)
+        IUblue = 255 * Iblue.astype(np.uint8)
+        
         ##### Gathering #####
         B = img.copy()
-        B[:,:,0] = Ired
-        B[:,:,1] = Igreen
-        B[:,:,2] = Iblue
+        B[:,:,0] = IUred
+        B[:,:,1] = IUgreen
+        B[:,:,2] = IUblue
         # B is in uint8, we convert in bool
-        B = sp.asarray(B, dtype = bool)
+        #B = sp.asarray(B, dtype = bool)
         
         return B
         
@@ -60,8 +62,8 @@ def OtsuProprement(img):
     if np.shape(size) == (2,):
         T = mahotas.thresholding.otsu(img)
         B = img > T
-        B = sp.asarray(B, dtype = bool)
-        return B
+        BU = 255 * B.astype(np.uint8)
+        return BU
     
     ##### Sinon        
     else:
@@ -69,41 +71,17 @@ def OtsuProprement(img):
 
 ##################### OTSU IMAGES NORMALES ###########################
     
-#for i in xrange(28,67):    
-#    ##### Reading Image #####
-#    image = mahotas.imread(path+name+str(i)+jpg)
-#    
-#    ##### Application de la Fonction #####
-#    imageSeg = OtsuProprement(image)
-#    
-#    ##### Saving Image Segmented #####    
-#    smisc.imsave(path+nameSeg+str(i)+jpg,imageSeg)
-    
-    
-#################### OTSU IMAGES S1, S2, S3, ET S #################### 
-     
-for i in [28, 29, 32, 33, 37, 42, 47, 52, 57, 62, 66]:
+for i in xrange(28,67):    
     ##### Reading Image #####
-    S1 = mahotas.imread(path1+name1+str(i)+png)
-    S2 = mahotas.imread(path2+name2+str(i)+png)
-    S3 = mahotas.imread(path3+name3+str(i)+png)
+    image = mahotas.imread(path+name+str(i)+jpg)
     
     ##### Application de la Fonction #####
-    S1Seg = OtsuProprement(S1)
-    S2Seg = OtsuProprement(S2)
-    S3Seg = OtsuProprement(S3)
-    
-    #I = mahotas.imread(path+name+str(i)+jpg)
-    A = np.empty((2048, 3072, 3))
-    A[:,:,0] = S1Seg
-    A[:,:,1] = S2Seg
-    A[:,:,2] = S3Seg
+    imageSeg = OtsuProprement(image)
     
     ##### Saving Image Segmented #####    
-    #smisc.imsave(path1+nameS1Seg+str(i)+png, S1Seg)
-    #smisc.imsave(path2+nameS2Seg+str(i)+png, S2Seg)
-    #smisc.imsave(path3+nameS3Seg+str(i)+png, S3Seg)
-    smisc.imsave(pathA+nameA+str(i)+png, A)    
+    smisc.imsave(path+nameSeg+str(i)+jpg,imageSeg)
+
+
     
 
     
